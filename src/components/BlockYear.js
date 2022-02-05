@@ -16,6 +16,7 @@ function BlockYear() {
         <h3 className = "block-label">2022</h3>
         <SubBlock/>
         <button className="sub-block-create" onClick={createSubBlock}>+</button>
+        <input placeholder="this is my input placeholder"></input>
     </div>
     );
 }
