@@ -2,9 +2,9 @@ import React from 'react';
 
 function SubBlockCreate() {
   return (
-    <p className="sub-block-create">
+    <button className="sub-block-create" >
         +
-    </p>
+    </button>
   );
 }
 
