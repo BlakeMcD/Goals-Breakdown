@@ -1,9 +1,8 @@
 import { combineReducers } from "redux";
-import yearReducer from './yearReducer';
+import yearReducer from "./yearReducer";
 
 const rootReducer = combineReducers({
-    yearReducer
+    year: yearReducer
 });
 
-
-export default rootReducer;
+export default rootReducer
