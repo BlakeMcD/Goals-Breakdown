@@ -4,7 +4,8 @@ import BlockYear from './components/BlockYear';
 
 function App() {
   return (
-    <div>This is the only thing that should be written
+    <div>
+      <p>This is the only thing that should be written</p>
     <BlockYear/>
     </div>
   );

@@ -1,1 +1,3 @@
-First commit 
+Learnings
+
+.parentNode will refer the parent of the specified node in the DOM Tree 
