@@ -3,7 +3,7 @@ import { bindActionCreators } from "redux"
 const yearReducer = (state =[], action) => {
     switch(action.type) {
 
-    case 'ADD_ITEM': 
+    case 'ADD_YEAR': 
         console.log("Item has been added");
         return [...state, action.item];
 

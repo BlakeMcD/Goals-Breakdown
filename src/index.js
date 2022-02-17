@@ -8,15 +8,17 @@ import { Provider } from 'react-redux';
 
 import rootReducer from './reducers/rootReducer';
 
-import year, { addItem, deleteItem } from './actions/year';
+import actionCreator, { addYear, deleteYear } from './actions/actionCreator';
+
+//REDUCER
 
 //STORE - globalized state.
 const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
 //DISPATCH - sends action to reducer. kicks things off. 
-store.dispatch(addItem());
-store.dispatch(deleteItem());
+store.dispatch(addYear("2022"));
+// store.dispatch(deleteItem());
 // store.dispatch(deleteItem());
 
 
