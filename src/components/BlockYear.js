@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import SubBlock from './SubBlock';
 import { useSelector, useDispatch } from 'react-redux';
-import { addYear, deleteYear } from '../actions/actionCreator';
+import { addYear, addYearCat, deleteYear } from '../actions/actionCreator';
 
 
 function BlockYear() {
@@ -23,6 +23,10 @@ function BlockYear() {
         dispatch(addYear("2023"));
     }
 
+    const addYearCatToStore = () => {
+        dispatch(addYearCat("Finance"));
+    }
+
     //return value
     return (
     <div className="block block-year">
@@ -31,6 +35,7 @@ function BlockYear() {
         <button className="sub-block-create" onClick={createSubBlock}>+</button>
         <input placeholder="this is my input placeholder"></input>
         <button className="sub-block-create" onClick={addYearToStore}>Add Year To Store</button>
+        <button className="sub-block-create" onClick={addYearCatToStore}>Add Year Category To Store</button>
         <h3>List Items</h3>
         <p>{listItems}</p>
     </div>

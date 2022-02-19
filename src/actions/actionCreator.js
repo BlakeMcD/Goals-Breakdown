@@ -14,9 +14,10 @@ export const deleteYear = (payload) => {
     };
 };
 
-export const addYearCat = () => {
+export const addYearCat = (payload) => {
     return {
-        type: "ADD_YEAR_CAT"
+        type: "ADD_YEAR_CAT", 
+        item: payload
     };
 };
 
