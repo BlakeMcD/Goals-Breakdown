@@ -16,6 +16,18 @@
   text-align: center;
 }
 
+.block-year {
+}
+
+.block-category {
+  background-color: red;
+  border-radius: 8px;
+  width: 90%;
+  position: relative;
+  left: 5%;
+  margin: 5px 0 5px 0;
+}
+
 .block__text-input {
   background: none;
   border: none;

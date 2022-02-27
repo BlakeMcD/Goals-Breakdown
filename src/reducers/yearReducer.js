@@ -25,42 +25,6 @@ const yearReducer = (state = [], action) => {
 
 export default yearReducer;
 
-//adding a new key-value pair
-action = "something"
 
-state.map(obj => {
-    if (obj.year === 2023) {
-        obj = {...obj, cat: action} //add or update
-    }
-    return obj
-})
 
-//adding a new array
-action = [mon, tues]
 
-state.map(obj => {
-    if (obj.year === 2023) {
-        obj = {...obj, cat: action} //add
-    }
-    return obj
-})
-
-//updating an array
-action = [mon, tues]
-
-state.map(obj => {
-    if (obj.year === 2023) {
-        obj = {...obj, cat: [...obj.cat, ...action]} //update
-    }
-    return obj
-})
-
-// to add object (multiple key/value pairs)
-action = {cat: dfkj, asdjh: skdfh}
-
-state.map(obj => {
-    if (obj.year === 2023) {
-        obj = {...obj, ...action} //add or update
-    }
-    return obj
-})
