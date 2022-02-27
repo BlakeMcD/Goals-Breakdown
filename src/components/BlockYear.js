@@ -5,7 +5,7 @@ import { addYear, addYearCat, deleteYear } from '../actions/actionCreator';
 import BlockCategory from './BlockCategory';
 
 
-function BlockYear() {
+function BlockYear(props) {
 
     //VARIABLES
 
@@ -39,7 +39,7 @@ function BlockYear() {
     //return value
     return (
     <div className="block block-year">
-        <h3 className = "block-label">YEAR</h3>
+        <h3 className = "block-label">{props.name}</h3>
         {returnCategories()}
         <button onClick={addBlockCategory}>Add A Category</button>
     </div>

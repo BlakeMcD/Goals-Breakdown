@@ -6,22 +6,22 @@ import React, { useState } from 'react';
 function App() {
 
   //CONSTANTS
-  let blockyear = 2022;
+  let baseYear = 2022;
 
   //STATE
-  const [years, setYears] = useState([blockyear]);
+  const [years, setYears] = useState([2022]);
 
   //FUNCTIONS
   const addBlockYear = () => {
-    blockyear += 1;
-    setYears([...years, blockyear]);
+    const mostRecentYear = baseYear+(years.length)
+    setYears([...years, mostRecentYear]);
   }
 
   const returnYears = () => {
     
     let allYears = [];
     for (let i = 0; i < years.length; i++) {
-      allYears.push(<BlockYear key={`${i}`}/>)
+      allYears.push(<BlockYear key={`${i}`} name={years[i]}/>)
     } 
     return allYears;
   }
