@@ -1,4 +1,5 @@
 import React, { useState } from 'react'; 
+import BlockItem from './BlockItem';
 
 function BlockCategory() {
 
@@ -14,7 +15,7 @@ function BlockCategory() {
     const returnItems = () => {
         let allItems = [];
         for (let i = 0; i < items.length; i++) {
-        allItems.push(<p key={i} className="sub-block-create">This is an Item</p>)
+        allItems.push(<BlockItem key={i} className="sub-block-create">This is an Item</BlockItem>)
         } 
         return allItems;
     }
