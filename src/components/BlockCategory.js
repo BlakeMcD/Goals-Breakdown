@@ -15,7 +15,7 @@ function BlockCategory() {
     const returnItems = () => {
         let allItems = [];
         for (let i = 0; i < items.length; i++) {
-        allItems.push(<BlockItem key={i} className="sub-block-create">This is an Item</BlockItem>)
+        allItems.push(<BlockItem key={i} className="sub-block-create blockCategory">This is an Item</BlockItem>)
         } 
         return allItems;
     }
@@ -30,9 +30,8 @@ function BlockCategory() {
 
   return (
     <div className="block-category">
-        <h3>{category}</h3>
         <form onSubmit={handleSubmit}>
-          <input type="text" value={category} onChange={handleChange}/>
+          <input type="text" value={category} onChange={handleChange} className="block-category__title"/>
         </form>
         {returnItems()}
         <button onClick={addBlockItem}>Add an Item</button>

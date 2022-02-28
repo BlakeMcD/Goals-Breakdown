@@ -26,7 +26,7 @@ function App() {
     
     let allYears = [];
     for (let i = 0; i < years.length; i++) {
-      allYears.push(<BlockYear key={`${i}`} name={years[i]} />)
+      allYears.push(<BlockYear key={`${i}`} name={years[i]}/>)
     } 
     return allYears;
   }
