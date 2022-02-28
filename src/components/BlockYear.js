@@ -2,42 +2,46 @@ import React, { useState } from 'react';
 import SubBlock from './SubBlock';
 import { useSelector, useDispatch } from 'react-redux';
 import { addYear, addYearCat, deleteYear } from '../actions/actionCreator';
+import BlockCategory from './BlockCategory';
 
 
-function BlockYear() {
+function BlockYear(props) {
 
+    //VARIABLES
 
-    //states
-    // const items = useSelector(state => state.year);
-    const dispatch = useDispatch();
-    const [listItems, setListItems] = useState(["first item in array, second item in array"])
+    //STATES
+    // const dispatch = useDispatch();
+    // const [listItems, setListItems] = useState(["first item in array, second item in array"])
+    const [categories, setCategories] = useState([])
 
-    //functions
-    const createSubBlock = (event) => {
-        console.log("button clicked")
-        setListItems(listItems.concat(<p>This is an additional list item</p>))
-        // dispatch(addItem(listItems.toString()));
-    }
+    //FUNCTIONS
+    const addBlockCategory = () => {
+        setCategories([...categories, "category"]);
+      }
 
-    const addYearToStore = () => {
-        dispatch(addYear("2023"));
-    }
+    const returnCategories = () => {
+        let allCategories = [];
+        for (let i = 0; i < categories.length; i++) {
+        //   allCategories.push(<BlockYear key={`${i}`}/>)
+        allCategories.push(<BlockCategory key={i} className="sub-block-create">This is a Category</BlockCategory>)
+        } 
+        return allCategories;
+      }
 
-    const addYearCatToStore = () => {
-        dispatch(addYearCat("Finance"));
-    }
+    // const addYearToStore = () => {
+    //     dispatch(addYear("2023"));
+    // }
+
+    // const addYearCatToStore = () => {
+    //     dispatch(addYearCat("Finance"));
+    // }
 
     //return value
     return (
     <div className="block block-year">
-        <h3 className = "block-label">2022</h3>
-        <SubBlock/>
-        <button className="sub-block-create" onClick={createSubBlock}>+</button>
-        <input placeholder="this is my input placeholder"></input>
-        <button className="sub-block-create" onClick={addYearToStore}>Add Year To Store</button>
-        <button className="sub-block-create" onClick={addYearCatToStore}>Add Year Category To Store</button>
-        <h3>List Items</h3>
-        <p>{listItems}</p>
+        <h3 className = "block-label">{props.name}</h3>
+        {returnCategories()}
+        <button onClick={addBlockCategory}>Add A Category</button>
     </div>
     );
 }

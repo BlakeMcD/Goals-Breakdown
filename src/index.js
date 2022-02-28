@@ -16,11 +16,8 @@ import actionCreator, { addYear, deleteYear } from './actions/actionCreator';
 const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
-//DISPATCH - sends action to reducer. kicks things off. 
+//DISPATCH - sends action to reducer. kic  ks things off. 
 store.dispatch(addYear("2022"));
-// store.dispatch(deleteItem());
-// store.dispatch(deleteItem());
-
 
 ReactDOM.render(
   <React.StrictMode>
