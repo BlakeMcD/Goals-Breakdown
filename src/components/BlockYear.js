@@ -11,8 +11,8 @@ function BlockYear(props) {
 
     //STATES
     // const dispatch = useDispatch();
-    // const [listItems, setListItems] = useState(["first item in array, second item in array"])
-    const [categories, setCategories] = useState([])
+    const [categories, setCategories] = useState([]);
+    const [text, setText] = useState(props.name.toString())
 
     //FUNCTIONS
     const addBlockCategory = () => {
@@ -22,12 +22,13 @@ function BlockYear(props) {
     const returnCategories = () => {
         let allCategories = [];
         for (let i = 0; i < categories.length; i++) {
-        //   allCategories.push(<BlockYear key={`${i}`}/>)
         allCategories.push(<BlockCategory key={i} className="sub-block-create">This is a Category</BlockCategory>)
         } 
         return allCategories;
       }
 
+      
+    //DISPATCHES
     // const addYearToStore = () => {
     //     dispatch(addYear("2023"));
     // }
@@ -39,7 +40,7 @@ function BlockYear(props) {
     //return value
     return (
     <div className="block block-year">
-        <h3 className = "block-label">{props.name}</h3>
+        <h3 className = "block-label">{text}</h3>
         {returnCategories()}
         <button onClick={addBlockCategory}>Add A Category</button>
     </div>
