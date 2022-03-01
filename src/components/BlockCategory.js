@@ -1,7 +1,7 @@
 import React, { useState } from 'react'; 
 import BlockItem from './BlockItem';
 
-function BlockCategory() {
+function BlockCategory(props) {
 
     //STATES
     const [items, setItems] = useState([]);
@@ -15,7 +15,7 @@ function BlockCategory() {
     const returnItems = () => {
         let allItems = [];
         for (let i = 0; i < items.length; i++) {
-        allItems.push(<BlockItem key={i} className="sub-block-create blockCategory">This is an Item</BlockItem>)
+        allItems.push(<BlockItem key={i} className="sub-block-create blockCategory" blockGroup={props.blockGroup} blockCategory={category}>This is an Item</BlockItem>)
         } 
         return allItems;
     }

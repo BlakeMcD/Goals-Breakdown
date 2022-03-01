@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function BlockItem() {
+function BlockItem(props) {
 
     //STATES
     const [itemText, setItemText] = useState("Click to add text");
