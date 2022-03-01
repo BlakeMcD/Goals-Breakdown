@@ -1,5 +1,6 @@
 import React, { useState } from 'react'; 
 import BlockItem from './BlockItem';
+import DeleteComponentButton from './DeleteComponentButton';
 
 function BlockCategory(props) {
 
