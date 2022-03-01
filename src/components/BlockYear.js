@@ -22,7 +22,7 @@ function BlockYear(props) {
     const returnCategories = () => {
         let allCategories = [];
         for (let i = 0; i < categories.length; i++) {
-        allCategories.push(<BlockCategory key={i} className="sub-block-create">This is a Category</BlockCategory>)
+        allCategories.push(<BlockCategory key={i} className="sub-block-create" blockGroup={props.blockGroup}>This is a Category </BlockCategory>)
         } 
         return allCategories;
       }
