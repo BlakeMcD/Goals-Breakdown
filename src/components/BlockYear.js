@@ -3,6 +3,7 @@ import SubBlock from './SubBlock';
 import { useSelector, useDispatch } from 'react-redux';
 import { addYear, addYearCat, deleteYear } from '../actions/actionCreator';
 import BlockCategory from './BlockCategory';
+import DeleteComponentButton from './DeleteComponentButton';
 
 
 function BlockYear(props) {
@@ -17,15 +18,41 @@ function BlockYear(props) {
     //FUNCTIONS
     const addBlockCategory = () => {
         setCategories([...categories, "category"]);
-      }
+    }
+
+    const deleteChildComponent = (idValue) => {
+        // setCategories(
+        //   categories.filter(category => category.id !== id)
+        // );
+        console.log("deleteChildComponent code ran");
+        console.log(`The idValue is ${idValue}`);
+    };
+
+    const removeCategory = (iValue) => {
+      console.log(`the value of i is: ${iValue}`)
+      
+      let origArray = categories;
+      let preValuesArray = categories.slice(0,iValue-1)
+      let postValuesArray = categories.slice(iValue+1)
+      const joinedList = preValuesArray.concat(postValuesArray)
+
+      setCategories(joinedList);
+      console.log("removeCategory code running")
+    }
 
     const returnCategories = () => {
         let allCategories = [];
         for (let i = 0; i < categories.length; i++) {
-        allCategories.push(<BlockCategory key={i} className="sub-block-create" blockGroup={props.blockGroup}>This is a Category </BlockCategory>)
+        allCategories.push(
+          <div key={i}>
+            {/* <DeleteComponentButton key={`${i}DeleteButton`} idValue={i} deleteComponent={deleteChildComponent}/> */}
+            <button onClick={() => removeCategory(i)}>Delete Category</button>
+            <BlockCategory key={`${i}BlockCategory`} className="sub-block-create" blockGroup={props.blockGroup}>This is a Category </BlockCategory>
+          </div>
+          )
         } 
         return allCategories;
-      }
+    }
 
       
     //DISPATCHES
