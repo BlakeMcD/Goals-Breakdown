@@ -1,15 +1,8 @@
 import React from 'react'
 
 function YearBlock() {
-  return (
-    <div>YearBlock</div>
-  )
-}
-
-export default YearBlock
-
-
- //DISPATCHES
+    
+    //DISPATCHES
     // const addYearToStore = () => {
     //     dispatch(addYear("2023"));
     // }
@@ -17,3 +10,13 @@ export default YearBlock
     // const addYearCatToStore = () => {
     //     dispatch(addYearCat("Finance"));
     // }
+
+    //RETURN
+  return (
+    <button>This is a YearBlock</button>
+  )
+}
+
+export default YearBlock
+
+
