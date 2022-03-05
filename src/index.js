@@ -5,10 +5,11 @@ import App from './App';
 
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk'
 
 import rootReducer from './reducers/rootReducer';
 
-import actionCreator, { addYear, deleteYear } from './actions/actionCreator';
+import { addYear, addYearCategory } from './actions/actionCreator';
 
 //REDUCER
 

@@ -10,12 +10,12 @@ JESS NOTES
 //adding a new key-value pair
 action = "something"
 
-state.map(obj => {
-    if (obj.year === 2023) {
-        obj = {...obj, cat: action} //add or update
-    }
-    return obj
-})
+export const addYearCategory = (payload) => {
+    return {
+        type: "ADD_YEAR_CATEGORY", 
+        item: payload
+    };
+};
 
 
 //adding a new array
