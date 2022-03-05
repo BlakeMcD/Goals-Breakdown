@@ -7,15 +7,19 @@ const yearReducer = (state = [], action) => {
         console.log("Item has been added");
         return [...state, action.item];
 
-    // case 'ADD_YEAR_CATEGORY':
-    //     // state.map(obj => {
-    //     //     if (obj.year === "2022") {
-    //     //         obj = {...obj, category: ["Finance"]};
-    //     //         // return obj
-    //     //     }
-    //     //     // return [...state, obj]
-    //     // })
-    //     return state;
+    case 'ADD_YEAR_CATEGORY':
+        state.map(obj => {
+            if (obj.year === "2022") {
+                console.log("object year is 2022");
+                
+                obj = {...obj, category: "Finance"};
+                console.log(obj);
+                return [...state, obj];
+            }
+            
+            
+        })
+        // return state;
 
     default: 
         return state;
