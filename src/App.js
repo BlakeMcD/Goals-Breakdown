@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import YearBlock from './components/new_categorisation/YearBlock';
 import YearCategory from './components/new_categorisation/YearCategory';
 import YearItem from './components/new_categorisation/YearItem';
+import MonthBlock from './components/new_categorisation/MonthBlock';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <YearBlock/>
       <YearCategory/>
       <YearItem/>
+      <MonthBlock/>
 
     </div>
   );

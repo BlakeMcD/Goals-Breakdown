@@ -21,6 +21,14 @@ export const addYearCategoryItem = (payload) => {
     }
 }
 
+//MONTH
+export const addMonth = (payload) => {
+    return {
+        type: "ADD_MONTH",  
+        item: payload
+    };
+};
+
 export const deleteYear = (payload) => {
     return {
         type: "DELETE_YEAR",

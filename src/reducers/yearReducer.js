@@ -23,6 +23,16 @@ const yearReducer = (state = [], action) => {
             }
             return obj;
         })
+    
+    case 'ADD_MONTH':
+        return state.map(obj => {
+            if (obj.year === "2022") {
+                // return  {...obj, category: "Finance"};
+                return  {...obj, months: [{month: "January"}]};
+            };
+            return obj;
+        })
+
 
     default: 
         return state;
