@@ -11,9 +11,12 @@ const yearReducer = (state = [], action) => {
     case 'ADD_YEAR_CATEGORY':
         return state.map(obj => {
             if (obj.year === "2022") {
-                console.log(obj.categories)
+                //check if category already exists
+                if (obj.categories.find((post) => post.category === action.item.category)) {
+                    return obj
+                }
                 return  {...obj, categories: [...obj.categories, action.item]};
-                // return  {...obj, categories: [action.item]};
+               
             };
             return obj;
         })
