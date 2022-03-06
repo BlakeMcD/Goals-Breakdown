@@ -18,7 +18,7 @@ const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && wi
 );
 
 //DISPATCH - sends action to reducer. kic  ks things off. 
-store.dispatch(addYear({year: "2022"}));
+store.dispatch(addYear({year: "2022", categories: []}));
 
 ReactDOM.render(
   <React.StrictMode>

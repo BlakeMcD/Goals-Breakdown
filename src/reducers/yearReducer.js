@@ -1,4 +1,5 @@
 import { bindActionCreators } from "redux"
+import { addYearCategoryItem } from "../actions/actionCreator";
 
 const yearReducer = (state = [], action) => {
     switch(action.type) {
@@ -10,8 +11,9 @@ const yearReducer = (state = [], action) => {
     case 'ADD_YEAR_CATEGORY':
         return state.map(obj => {
             if (obj.year === "2022") {
-                // return  {...obj, category: "Finance"};
-                return  {...obj, categories: [action.item]};
+                console.log(obj.categories)
+                return  {...obj, categories: [...obj.categories, action.item]};
+                // return  {...obj, categories: [action.item]};
             };
             return obj;
         })
