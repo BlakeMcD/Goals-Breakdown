@@ -13,9 +13,9 @@ function YearCategory() {
     }
 
     //RETURN VALUE
-  return (
+    return (
     <button onClick={addCategoryToYear}>YearCategory: this button adds a category to the year</button>
-  )
+    )
 }
 
 export default YearCategory

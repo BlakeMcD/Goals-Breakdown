@@ -4,6 +4,7 @@ import BlockYear from './components/BlockYear';
 import React, { useState } from 'react';
 import YearBlock from './components/new_categorisation/YearBlock';
 import YearCategory from './components/new_categorisation/YearCategory';
+import YearItem from './components/new_categorisation/YearItem';
 
 
 function App() {
@@ -14,6 +15,8 @@ function App() {
     <div>
       <YearBlock/>
       <YearCategory/>
+      <YearItem/>
+
     </div>
   );
 
