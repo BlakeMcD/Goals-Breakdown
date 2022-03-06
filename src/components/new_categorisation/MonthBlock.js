@@ -8,7 +8,7 @@ function MonthBlock() {
 
   //FUNCTIONS
   const addMonthToYear = () => {
-      dispatch(addMonth({month: "January"}))
+      dispatch(addMonth({month: "February"}))
   }
 
   //RETURN VALUE
