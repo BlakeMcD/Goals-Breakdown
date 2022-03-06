@@ -9,7 +9,7 @@ function YearCategory() {
 
     //FUNCTIONS
     const addCategoryToYear = () => {
-        dispatch(addYearCategory({category: "Finance"}))
+        dispatch(addYearCategory({category: "Health"}))
     }
 
     //RETURN VALUE

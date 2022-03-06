@@ -11,7 +11,7 @@ const yearReducer = (state = [], action) => {
         return state.map(obj => {
             if (obj.year === "2022") {
                 // return  {...obj, category: "Finance"};
-                return  {...obj, categories: [{category: "Finance"}]};
+                return  {...obj, categories: [action.item]};
             };
             return obj;
         })
