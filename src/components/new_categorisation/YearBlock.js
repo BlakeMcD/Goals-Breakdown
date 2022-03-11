@@ -1,19 +1,27 @@
-import React from 'react'
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { addYear } from './../../actions/actionCreator';
 
 function YearBlock() {
+    
+    //DISPATCHES
+
+    const dispatch = useDispatch();
+
+    const addYearToStore = () => {
+        dispatch(addYear({year: "2023"}));
+    }
+
+    // const addYearCatToStore = () => {
+    //     dispatch(addYearCat("Finance"));
+    // }
+
+    //RETURN
   return (
-    <div>YearBlock</div>
+    <button onClick={addYearToStore}>YearBlock: this button adds another year to store</button>
   )
 }
 
 export default YearBlock
 
 
- //DISPATCHES
-    // const addYearToStore = () => {
-    //     dispatch(addYear("2023"));
-    // }
-
-    // const addYearCatToStore = () => {
-    //     dispatch(addYearCat("Finance"));
-    // }

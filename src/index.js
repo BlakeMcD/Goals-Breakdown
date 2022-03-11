@@ -5,10 +5,11 @@ import App from './App';
 
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk'
 
 import rootReducer from './reducers/rootReducer';
 
-import actionCreator, { addYear, deleteYear } from './actions/actionCreator';
+import { addYear, addYearCategory } from './actions/actionCreator';
 
 //REDUCER
 
@@ -17,7 +18,7 @@ const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && wi
 );
 
 //DISPATCH - sends action to reducer. kic  ks things off. 
-store.dispatch(addYear({year: "2022"}));
+store.dispatch(addYear({year: "2022", categories: []}));
 
 ReactDOM.render(
   <React.StrictMode>
