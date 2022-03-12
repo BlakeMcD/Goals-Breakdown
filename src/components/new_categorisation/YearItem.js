@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux';
 import { addYearCategoryItem } from '../../actions/actionCreator';
 
-function YearItem() {
+function YearItem(props) {
 
     //DISPATCH
     const dispatch = useDispatch();
@@ -14,7 +14,9 @@ function YearItem() {
 
     //RETURN VALUE
     return (
-    <button onClick={addItemToCategory}>YearCategoryItem: this button adds an item to the category</button>
+        <div>
+            <button onClick={addItemToCategory}>YearCategoryItem: this button adds an item to the category</button>
+        </div>
     )
 
 }
