@@ -16,7 +16,6 @@ function App() {
     <div>
       <YearBlock/>
       <YearCategory/>
-  
       <MonthBlock/>
 
     </div>

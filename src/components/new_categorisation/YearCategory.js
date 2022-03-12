@@ -16,7 +16,8 @@ function YearCategory() {
 
 
     //STATE
-    const [categoryName, setCategoryName] = useState("blank")
+    const [categoryName, setCategoryName] = useState("blank");
+    
  
     //DISPATCH
     const dispatch = useDispatch();
@@ -29,6 +30,10 @@ function YearCategory() {
     const setStateOfCategoryName = (catName) => {
         console.log("setStateOfCategoryName code ran");
         setCategoryName(catName);
+    }
+
+    const addItemToCategory = () => {
+
     }
 
     //RETURN VALUE
