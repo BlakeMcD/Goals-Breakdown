@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addYearCategory } from './../../actions/actionCreator';
 import CategoryIcon from './CategoryIcon';
+import YearItem from './YearItem';
 
 function YearCategory() {
 
@@ -16,7 +17,7 @@ function YearCategory() {
 
     //STATE
     const [categoryName, setCategoryName] = useState("blank")
-
+ 
     //DISPATCH
     const dispatch = useDispatch();
 
@@ -35,11 +36,16 @@ function YearCategory() {
       <div>
         <button onClick={addCategoryToYear}>YearCategory: this button adds a category to the year. It's current state is: {categoryName}</button>
         <div>
-          <CategoryIcon icon={finance} handleCategoryNameChange={setStateOfCategoryName}/>
-          <CategoryIcon icon={health} handleCategoryNameChange={setStateOfCategoryName}/>
-          <CategoryIcon icon={mentalWellbeing} handleCategoryNameChange={setStateOfCategoryName}/>
-          <CategoryIcon icon={relationships} handleCategoryNameChange={setStateOfCategoryName}/>
-          <CategoryIcon icon={work} handleCategoryNameChange={setStateOfCategoryName}/>
+          <CategoryIcon categoryName={finance} handleCategoryNameChange={setStateOfCategoryName}/>
+        
+          <CategoryIcon categoryName={health} handleCategoryNameChange={setStateOfCategoryName}/>
+          <CategoryIcon categoryName={mentalWellbeing} handleCategoryNameChange={setStateOfCategoryName}/>
+          <CategoryIcon categoryName={relationships} handleCategoryNameChange={setStateOfCategoryName}/>
+          <CategoryIcon categoryName={work} handleCategoryNameChange={setStateOfCategoryName}/>
+
+          <YearItem></YearItem>
+
+
 
         </div>
       </div>
