@@ -24,7 +24,14 @@ const yearReducer = (state = [], action) => {
     case 'ADD_YEAR_CATEGORY_ITEM':
         return state.map(obj => {
             if (obj.categories[0].category === "Finance") {
-                return {...obj, categories: [{category: "Finance", items: ["this is an item"]}]}
+                console.log("ITEMS")
+                console.log(obj.categories[0].items)
+                if (obj.categories[0].items !== undefined) {
+                    return {...obj, categories: [{category: "Finance", items: [...obj.categories[0].items, "this is an item"]}]}
+                } else {
+                    return {...obj, categories: [{category: "Finance", items: [ "this is an item"]}]}
+                }
+                
             }
             return obj;
         })
