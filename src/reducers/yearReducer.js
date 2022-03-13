@@ -38,6 +38,10 @@ const yearReducer = (state = [], action) => {
             console.log("filtered list")
             console.log(filteredList)
 
+            const newItem = {
+                
+            }
+
             const newObject = {
                 category: action.item.category,
                 item: "This is an item"
@@ -50,7 +54,7 @@ const yearReducer = (state = [], action) => {
             console.log("filtered list")
             console.log(filteredList)
 
-            return {...obj, categories: [filteredList, newObject]}
+            return {...obj, categories: [...filteredList, newObject]}
             //attempt 7
                 //step 1 - return object with that category removed
             // if (obj.year == "2022") {
