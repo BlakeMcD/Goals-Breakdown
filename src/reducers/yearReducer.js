@@ -29,32 +29,75 @@ const yearReducer = (state = [], action) => {
             console.log("OBJ")
             console.log(obj)
 
-            //attempt 8
-            const filteredList = obj.categories.filter((cat) => {
-                return cat.category !== action.item.category
-            })
-            console.log("action.item.category")
-            console.log(action.item.category)
-            console.log("filtered list")
-            console.log(filteredList)
+             //attempt 9
 
-            const newItem = {
-                
+             console.log("action")
+             console.log(action)
+
+             return {
+                ...obj, 
+                categories: obj.categories.map((catBlock) => {
+                    if (catBlock.category === action.item.category) {
+                        return Object.assign({}, catBlock, {category: action.item.category, item: "Did this work?"})
+                    }
+                    return catBlock
+                })
             }
 
-            const newObject = {
-                category: action.item.category,
-                item: "This is an item"
-            }
+            //  return {
+            //     ...obj, 
+            //     categories: [
+            //         ...obj.categories, {
+            //             category: action.item.category, 
+            //             item: "THis better fucking work"
+            //         }
+            //     ]
+            // }
+            
+            // const newObject = () => {
+            //     if (obj.categories.find((catBlock) => catBlock.category === action.item.category)) {
+            //         return {
+            //             category: action.item.category,
+            //             item: "This is an item"
+            //         }
+            //     }
+            // }
 
-            console.log("newObject")
-            console.log(newObject)
+            
 
-            // filteredList.push(newObject);
-            console.log("filtered list")
-            console.log(filteredList)
+            //  const newObject = {
+            //     category: action.item.category,
+            //     item: "This is an item"
+            // } 
 
-            return {...obj, categories: [...filteredList, newObject]}
+            // return {...obj, categories: [...obj.categories, newObject()]}
+
+            // //attempt 8
+
+            // const filteredList = obj.categories.filter((cat) => {
+            //     return cat.category !== action.item.category
+            // })
+            // console.log("action.item.category")
+            // console.log(action.item.category)
+            // console.log("filtered list")
+            // console.log(filteredList)
+
+
+            // const newObject = {
+            //     category: action.item.category,
+            //     item: "This is an item"
+            // }
+
+            // console.log("newObject")
+            // console.log(newObject)
+
+            // // filteredList.push(newObject);
+            // console.log("filtered list")
+            // console.log(filteredList)
+
+            // return {...obj, categories: [...filteredList, newObject]}
+
+            
             //attempt 7
                 //step 1 - return object with that category removed
             // if (obj.year == "2022") {
