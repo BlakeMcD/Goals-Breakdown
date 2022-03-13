@@ -41,7 +41,7 @@ function YearBlock() {
           <YearCategory key={i} categoryName={categoriesArray[i].category}></YearCategory>
       )}
       return allCategories
-    } 
+  } 
 
   //RETURN
   return (

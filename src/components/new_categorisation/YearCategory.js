@@ -12,9 +12,13 @@ function YearCategory(props) {
 
     //SELECTOR
     const categoryItemsArray = useSelector((state) => {
-
         const rightObject = state.years[0].categories.find((catBlock) => catBlock.category === props.categoryName)
-
+        console.log("rightObject")
+        console.log(rightObject)
+        console.log(rightObject.items)
+        if (rightObject.items === undefined) {
+            return []
+        }
         return rightObject.items
     })
     console.log(`categoryItemsArray for ${props.categoryName}`)
@@ -26,13 +30,14 @@ function YearCategory(props) {
         dispatch(addYearCategoryItem({category: props.categoryName}));
     }
 
-    const renderItemCategories = () => {
-        console.log("renderItemCategories ran") 
+    const renderCategoryItem = () => {
+        console.log("renderCategoryItem ran") 
         let allItems = [];
-        // for (let i = 0; i < categoriesArray.length; i++) {
-        //   allItems.push(
-        //     <YearCategory key={i} categoryName={categoriesArray[i].category}></YearCategory>
-        // )}
+        for (let i = 0; i < categoryItemsArray.length; i++) {
+          allItems.push(
+            // <YearCategory key={i} categoryName={categoriesArray[i].category}></YearCategory>
+            <YearItem key={i} categoryName={props.categoryName}>This is an item of {props.categoryName}</YearItem>
+        )}
         return allItems
     } 
 
@@ -43,7 +48,7 @@ function YearCategory(props) {
           <p>This is a category block and its name is {props.categoryName} </p>
           <button onClick={() => addItemToCategory()}>Clicking this will add an item to {props.categoryName}</button>
           {/* <YearItem categoryName={props.categoryName}></YearItem> */}
-
+            {renderCategoryItem()}
       </div>
     )
 }
