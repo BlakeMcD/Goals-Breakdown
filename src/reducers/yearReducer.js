@@ -29,16 +29,38 @@ const yearReducer = (state = [], action) => {
             console.log("OBJ")
             console.log(obj)
 
+            //attempt 8
+            const filteredList = obj.categories.filter((cat) => {
+                return cat.category !== action.item.category
+            })
+            console.log("action.item.category")
+            console.log(action.item.category)
+            console.log("filtered list")
+            console.log(filteredList)
+
+            const newObject = {
+                category: action.item.category,
+                item: "This is an item"
+            }
+
+            console.log("newObject")
+            console.log(newObject)
+
+            // filteredList.push(newObject);
+            console.log("filtered list")
+            console.log(filteredList)
+
+            return {...obj, categories: [filteredList, newObject]}
             //attempt 7
                 //step 1 - return object with that category removed
-            if (obj.year == "2022") {
-                const filteredObject = obj.categories.filter((category) => 
-                    category.name !== action.item.category
-                )
-                console.log("FILTERED OBJECT")
-                console.log(filteredObject)
-                return filteredObject
-            }
+            // if (obj.year == "2022") {
+            //     const filteredObject = obj.categories.filter((category) => 
+            //         category.name !== action.item.category
+            //     )
+            //     console.log("FILTERED OBJECT")
+            //     console.log(filteredObject)
+            //     return filteredObject
+            // }
 
             //attempt 6
             // if (obj.year === "2022") {
