@@ -11,6 +11,16 @@
   text-align: center;
 }
 
+.yearCategory {
+  background-color: red;
+  border-radius: 8px;
+  border: 2px solid black;
+  width: 90%;
+  position: relative;
+  left: 5%;
+  margin: 5px 0 5px 0;
+}
+
 
 /* OLD LAYOUT
 .block {

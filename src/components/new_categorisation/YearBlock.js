@@ -52,7 +52,7 @@ function YearBlock() {
         let allCategories = [];
         for (let i = 0; i < categoriesArray.length; i++) {
           allCategories.push(
-            <YearCategory></YearCategory>
+            <YearCategory key={i} categoryName={categoriesArray[i].category}></YearCategory>
         )}
         return allCategories
       } 
@@ -79,8 +79,8 @@ function YearBlock() {
         <CategoryIcon categoryName={work} iconClickedAddCatToYear={addCategoryToYear}/>
 
         <button onClick={consoleLogObject}>Console.log what's in state</button>
-        {/* <button onClick={renderBlockCategories}>Render Block Categories</button>
-        {renderBlockCategories} */}
+        {/* <button onClick={renderBlockCategories}>Render Block Categories</button> */}
+        {renderBlockCategories()} 
     </div>
   )
 }
