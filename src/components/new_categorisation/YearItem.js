@@ -9,13 +9,14 @@ function YearItem(props) {
 
     //FUNCTIONS
     const addItemToCategory = () => {
-        dispatch(addYearCategoryItem({category: "Finance"}));
+        dispatch(addYearCategoryItem({category: props.categoryName}));
     }
 
     //RETURN VALUE
     return (
         <div>
-            <button onClick={addItemToCategory}>YearCategoryItem: this button adds an item to the category</button>
+            <p>YearItem belonging to {props.categoryName}</p>
+            {/* <button onClick={addItemToCategory}>YearCategoryItem: this button adds an item to the category and its categoryName is {props.categoryName}</button> */}
         </div>
     )
 
