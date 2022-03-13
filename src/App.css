@@ -3,6 +3,16 @@
   margin: 0px;
 }
 
+.yearBlock {
+  width: 25%;
+  border-radius: 8px;
+  border: 2px solid black;
+  background-color: gold;
+  text-align: center;
+}
+
+
+/* OLD LAYOUT
 .block {
   width: 25%;
   border-radius: 8px;
@@ -51,4 +61,4 @@
   border-radius: 8px;
   border: 1px solid black;
   background-color: yellow;
-}
+} */

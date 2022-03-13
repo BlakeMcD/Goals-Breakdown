@@ -17,7 +17,6 @@ function YearCategory() {
 
     //STATE
     const [categoryName, setCategoryName] = useState("blank");
-    
  
     //DISPATCH
     const dispatch = useDispatch();
@@ -32,27 +31,13 @@ function YearCategory() {
         setCategoryName(catName);
     }
 
-    const addItemToCategory = () => {
-
-    }
 
     //RETURN VALUE
     return (
       <div>
-        <button onClick={addCategoryToYear}>YearCategory: this button adds a category to the year. It's current state is: {categoryName}</button>
-        <div>
-          <CategoryIcon categoryName={finance} handleCategoryNameChange={setStateOfCategoryName}/>
-        
-          <CategoryIcon categoryName={health} handleCategoryNameChange={setStateOfCategoryName}/>
-          <CategoryIcon categoryName={mentalWellbeing} handleCategoryNameChange={setStateOfCategoryName}/>
-          <CategoryIcon categoryName={relationships} handleCategoryNameChange={setStateOfCategoryName}/>
-          <CategoryIcon categoryName={work} handleCategoryNameChange={setStateOfCategoryName}/>
 
-          <YearItem></YearItem>
+          <p>This is a category block </p>
 
-
-
-        </div>
       </div>
     )
 }
