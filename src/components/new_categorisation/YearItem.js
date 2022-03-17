@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { addYearCategoryItem } from '../../actions/actionCreator';
 
 function YearItem(props) {
+
+    //STATES
+    const [itemText, setItemText] = useState("Click to add text");
 
     //DISPATCH
     const dispatch = useDispatch();
@@ -12,11 +15,22 @@ function YearItem(props) {
         dispatch(addYearCategoryItem({category: props.categoryName}));
     }
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        //send dispatch
+    };
+
+    const handleChange = (event) => {
+        setItemText(event.target.value);
+    };
+
     //RETURN VALUE
     return (
         <div>
             <p>YearItem belonging to {props.categoryName}</p>
-            {/* <button onClick={addItemToCategory}>YearCategoryItem: this button adds an item to the category and its categoryName is {props.categoryName}</button> */}
+            <form onSubmit={handleSubmit}>
+                <input type="text" value={itemText} onChange={handleChange}/>
+            </form>
         </div>
     )
 

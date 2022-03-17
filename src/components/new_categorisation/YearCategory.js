@@ -4,6 +4,7 @@ import { addYearCategory } from './../../actions/actionCreator';
 import { addYearCategoryItem } from '../../actions/actionCreator';
 import CategoryIcon from './CategoryIcon';
 import YearItem from './YearItem';
+import { v4 as uuidv4 } from 'uuid';
 
 function YearCategory(props) {
 
@@ -36,7 +37,7 @@ function YearCategory(props) {
         for (let i = 0; i < categoryItemsArray.length; i++) {
           allItems.push(
             // <YearCategory key={i} categoryName={categoriesArray[i].category}></YearCategory>
-            <YearItem key={i} categoryName={props.categoryName}>This is an item of {props.categoryName}</YearItem>
+            <YearItem key={uuidv4()} categoryName={props.categoryName}/>
         )}
         return allItems
     } 
