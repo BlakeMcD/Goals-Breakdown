@@ -21,32 +21,24 @@ const yearReducer = (state = [], action) => {
             return obj;
         })
     
-    case 'ADD_YEAR_CATEGORY_ITEM':
-        console.log("ACTION")
-        console.log(action)
-        
+    case 'ADD_YEAR_CATEGORY_ITEM':      
         return state.map(obj => {
-            console.log("OBJ")
-            console.log(obj)
-
-             //attempt 9
-
-             console.log("action")
-             console.log(action)
-
              return {
                 ...obj, 
                 categories: obj.categories.map((catBlock) => {
+                    console.log("action:", action);
                     if (catBlock.category === action.item.category) {
                         if (catBlock.items === undefined) {
-                            return {...catBlock, category: action.item.category, items: ["did this work"] }
+                            return {...catBlock, category: action.item.category, items: [{text: "did this work", uuid: action.item.uuid}] }
                         }
-                        return {...catBlock, category: action.item.category, items: [...catBlock.items, "did this work"] }                    
+                        return {...catBlock, category: action.item.category, items: [...catBlock.items, {text: "did this work", uuid: action.item.uuid}] }                    
                     }
                     return catBlock
                 })
             }
         })
+
+    
     
     case 'ADD_MONTH':
         return state.map(obj => {
