@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { addYearCategoryItem } from '../../actions/actionCreator';
+import { addYearCategoryItem, editYearCategoryItem } from '../../actions/actionCreator';
 
 function YearItem(props) {
 
@@ -18,6 +18,8 @@ function YearItem(props) {
     const handleSubmit = (event) => {
         event.preventDefault();
         //send dispatch
+        console.log("did this code in handle submit run?")
+        dispatch(editYearCategoryItem({category: props.categoryName, uuid: props.uuid}))
     };
 
     const handleChange = (event) => {
@@ -28,6 +30,7 @@ function YearItem(props) {
     return (
         <div>
             <p>YearItem belonging to {props.categoryName}</p>
+            <p>With a UUID of: {props.uuid}</p>
             <form onSubmit={handleSubmit}>
                 <input type="text" value={itemText} onChange={handleChange}/>
             </form>

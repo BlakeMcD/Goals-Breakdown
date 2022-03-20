@@ -38,6 +38,50 @@ const yearReducer = (state = [], action) => {
             }
         })
 
+    case 'EDIT_YEAR_CATEGORY_ITEM':
+        return state.map(obj => {
+
+            if (obj.categories.length !== 0) {
+                let objectsWithItems = obj.categories.map(ob => {
+                    if (ob.items.length !== 0) {
+                        return ob
+                    }})
+                console.log("objectsWithItems")
+                console.log(objectsWithItems)
+                console.log("action.item.uuid TEST", action.item.uuid)
+                if (objectsWithItems.length !== 0) {
+                    let relevantCategory = objectsWithItems.find((ob) => ob.category === action.item.category);
+                    // console.log("the relevant object has a uuid of:"+ob.items.uuid+"and the action.item.uuid is:"+action.item.uuid);
+                    console.log("and the relevant category is: ", relevantCategory);
+
+                    console.log("relevantCategory.items", relevantCategory.items)
+                    console.log("relevantCategory.items[0]", relevantCategory.items[0].uuid)
+                    console.log("action.item.uuid", action.item.uuid)
+                    
+                    
+                    
+                    let relevantItem = relevantCategory.items.find((item) => item.uuid === action.item.uuid);
+                    console.log("and the relevant item is: ", relevantItem);
+
+
+                    // let relevantItem = 
+                    // itemsWithItems.find((ob) => ob.items.uuid === action.item.uuid)
+                    // console.log("the relevant object has a uuid of:"+ob.items.uuid+"and the action.item.uuid is:"+action.item.uuid);
+                }
+                // return objectsWithItems
+            }
+            // let relevantObject = obj.find((ob) => ob.categories.items.uuid === action.item.uuid);
+            // // console.log("the relevant object has a uuid of:"+ob.items.uuid+"and the action.item.uuid is:"+action.item.uuid);
+            // console.log("relevant object is:"+relevantObject)
+            // if (relevantObject !== undefined) {
+            //     console.log("the relevant object has a uuid of:"+ob.categories.items.uuid+"and the action.item.uuid is:"+action.item.uuid);
+            // }
+            
+            return {
+                ...obj, 
+            }
+        })
+
     
     
     case 'ADD_MONTH':

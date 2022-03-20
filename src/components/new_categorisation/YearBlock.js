@@ -30,7 +30,7 @@ function YearBlock() {
   //FUNCTIONS
   const addCategoryToYear = (categoryName) => {
     console.log("addCategoryToYear")
-    dispatch(addYearCategory({category: categoryName}))
+    dispatch(addYearCategory({category: categoryName, items: []}))
   }
 
   const renderBlockCategories = () => {
