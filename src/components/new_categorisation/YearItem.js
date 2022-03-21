@@ -32,7 +32,7 @@ function YearItem(props) {
         <div>
             <p>YearItem belonging to {props.categoryName}</p>
             <p>With a UUID of: {props.uuid}</p>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="itemTextInput">
                 <input type="text" value={itemText} onFocus={handleFocus} onChange={handleChange}/>
             </form>
         </div>

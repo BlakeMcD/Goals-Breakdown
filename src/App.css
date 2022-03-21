@@ -21,6 +21,19 @@
   margin: 5px 0 5px 0;
 }
 
+.itemTextInput {
+
+}
+
+.itemTextInput input{
+  font-size: large;
+  color: lightgrey;
+  border-width: 0px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
 
 /* OLD LAYOUT
 .block {
