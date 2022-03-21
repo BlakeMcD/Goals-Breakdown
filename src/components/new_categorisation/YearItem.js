@@ -18,8 +18,7 @@ function YearItem(props) {
     const handleSubmit = (event) => {
         event.preventDefault();
         //send dispatch
-        console.log("did this code in handle submit run?")
-        dispatch(editYearCategoryItem({category: props.categoryName, uuid: props.uuid}))
+        dispatch(editYearCategoryItem({category: props.categoryName, uuid: props.uuid, text: itemText}))
     };
 
     const handleChange = (event) => {
