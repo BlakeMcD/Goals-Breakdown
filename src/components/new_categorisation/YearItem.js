@@ -25,13 +25,15 @@ function YearItem(props) {
         setItemText(event.target.value);
     };
 
+    const handleFocus = (event) => event.target.select();
+
     //RETURN VALUE
     return (
         <div>
             <p>YearItem belonging to {props.categoryName}</p>
             <p>With a UUID of: {props.uuid}</p>
             <form onSubmit={handleSubmit}>
-                <input type="text" value={itemText} onChange={handleChange}/>
+                <input type="text" value={itemText} onFocus={handleFocus} onChange={handleChange}/>
             </form>
         </div>
     )
