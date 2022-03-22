@@ -14,8 +14,15 @@ function App() {
   // RETURN VALUE
   return (
     <div>
-      <YearBlock/>
-      <MonthBlock/>
+        <div className="timeContainer">
+          <div className="yearBlockContainer">
+            <YearBlock/>
+          </div>
+          <div className="monthBlockContainer">
+            <MonthBlock month="January"/>
+            <MonthBlock  month="February"/>
+          </div>
+      </div>
 
     </div>
   );

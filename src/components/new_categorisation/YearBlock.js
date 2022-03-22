@@ -46,7 +46,7 @@ function YearBlock() {
   //RETURN
   return (
     <div className="yearBlock">
-
+        <h1>YEAR</h1>
         <CategoryIcon categoryName={finance} iconClickedAddCatToYear={addCategoryToYear}/>
         
         <CategoryIcon categoryName={health} iconClickedAddCatToYear={addCategoryToYear}/>

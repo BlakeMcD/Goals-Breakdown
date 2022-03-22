@@ -37,7 +37,6 @@ function YearCategory(props) {
     //RETURN
     return (
       <div className="yearCategory">
-
           <p>This is a category block and its name is {props.categoryName} </p>
           <button onClick={() => addItemToCategory()}>Clicking this will add an item to {props.categoryName}</button>
             {renderCategoryItem()}
