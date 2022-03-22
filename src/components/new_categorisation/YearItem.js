@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux';
 import { addYearCategoryItem, editYearCategoryItem, deleteYearCategoryItem } from '../../actions/actionCreator';
 
@@ -10,10 +10,13 @@ function YearItem(props) {
     //DISPATCH
     const dispatch = useDispatch();
 
+    //USEEFFECT
+    useEffect(() => {
+        console.log("Use Effect Fired");
+        dispatch(editYearCategoryItem({category: props.categoryName, uuid: props.uuid, text: itemText}));
+    }, [itemText])
+
     //FUNCTIONS
-    const addItemToCategory = () => {
-        dispatch(addYearCategoryItem({category: props.categoryName}));
-    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
