@@ -28,6 +28,13 @@ export const editYearCategoryItem = (payload) => {
     }
 }
 
+export const deleteYearCategoryItem = (payload) => {
+    return {
+        type: "DELETE_YEAR_CATEGORY_ITEM", 
+        item: payload
+    }
+}
+
 //MONTH
 export const addMonth = (payload) => {
     return {

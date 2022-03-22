@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { addYearCategoryItem, editYearCategoryItem } from '../../actions/actionCreator';
+import { addYearCategoryItem, editYearCategoryItem, deleteYearCategoryItem } from '../../actions/actionCreator';
 
 function YearItem(props) {
 
@@ -27,6 +27,11 @@ function YearItem(props) {
 
     const handleFocus = (event) => event.target.select();
 
+    const handleDelete = () => {
+        console.log("registered click")
+        dispatch(deleteYearCategoryItem({category: props.categoryName, uuid: props.uuid}))
+    }
+
     //RETURN VALUE
     return (
         <div>
@@ -35,6 +40,7 @@ function YearItem(props) {
             <form onSubmit={handleSubmit} className="itemTextInput">
                 <input type="text" value={itemText} onFocus={handleFocus} onChange={handleChange}/>
             </form>
+            <button onClick={handleDelete}>Delete this item with a UUID of: {props.uuid}</button>
         </div>
     )
 

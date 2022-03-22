@@ -60,6 +60,24 @@ const yearReducer = (state = [], action) => {
                 })              
             }
         })
+    
+    case 'DELETE_YEAR_CATEGORY_ITEM':
+        return state.map(obj => {
+            return {
+                ...obj, 
+                categories: obj.categories.map((categoryBlock) => {
+                    if (categoryBlock.category === action.item.category) {
+                        return {
+                            category: categoryBlock.category, 
+                            items: categoryBlock.items.filter((item) => {
+                                return item.uuid !== action.item.uuid 
+                            })
+                        }
+                    }
+                    return categoryBlock
+                })
+            }
+        })
 
     
     
