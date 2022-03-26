@@ -10,6 +10,7 @@ import thunk from 'redux-thunk'
 import rootReducer from './reducers/rootReducer';
 
 import { addYear, addYearCategory } from './actions/actionCreator';
+import { v4 as uuidv4 } from 'uuid';
 
 //REDUCER
 
@@ -19,7 +20,8 @@ const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && wi
 
 //DISPATCH - sends action to reducer. kic  ks things off. 
 store.dispatch(addYear(
-  {year: "2022", 
+  {
+    year: "2022", 
     categories: [], 
     months: []
   }));

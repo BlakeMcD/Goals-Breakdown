@@ -21,6 +21,13 @@ export const addYearCategoryItem = (payload) => {
     }
 }
 
+export const editYearName = (payload) => {
+    return {
+        type: "EDIT_YEAR_NAME",
+        item: payload
+    }
+}
+
 export const editYearCategoryItem = (payload) => {
     return {
         type: "EDIT_YEAR_CATEGORY_ITEM",

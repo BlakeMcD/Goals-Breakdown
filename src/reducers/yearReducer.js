@@ -36,6 +36,14 @@ const yearReducer = (state = [], action) => {
             }
         })
 
+    case 'EDIT_YEAR_NAME':
+        return state.map(obj => {
+            return {
+                ...obj, 
+                year: action.item.year
+            }
+        })
+
     case 'EDIT_YEAR_CATEGORY_ITEM':
         return state.map(obj => {
             // should map items, and replace the old one with the new one.

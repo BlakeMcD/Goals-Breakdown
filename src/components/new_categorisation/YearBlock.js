@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addYearCategory } from './../../actions/actionCreator';
 import YearCategory from './YearCategory';
 import CategoryIcon from './CategoryIcon';
+import { editYearName } from './../../actions/actionCreator';
 
 function YearBlock() {
     
@@ -14,6 +15,7 @@ function YearBlock() {
   const work = "Work";
 
   //STATE
+  const [yearName, setYearName] = useState("2022");
   const [categoryName, setCategoryName] = useState("blank");
 
   //SELECTOR
@@ -43,10 +45,24 @@ function YearBlock() {
       return allCategories
   } 
 
+  const handleChange = (event) => {
+    setYearName(event.target.value);
+  }
+
+  const handleFocus = (event) => event.target.select();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    dispatch(editYearName({year: yearName}));
+  }
+
   //RETURN
   return (
     <div className="yearBlock">
-        <h1>YEAR</h1>
+      <h1>{yearName}</h1>
+      <form onSubmit={handleSubmit}>
+        <input type="text" value={yearName} onFocus={handleFocus} onChange={handleChange}/>
+      </form>
         <CategoryIcon categoryName={finance} iconClickedAddCatToYear={addCategoryToYear}/>
         
         <CategoryIcon categoryName={health} iconClickedAddCatToYear={addCategoryToYear}/>
