@@ -9,7 +9,7 @@ function MonthBlock(props) {
 
   //RETURN VALUE
   return (
-    <div className="monthBlock">
+    <div className="monthBlock ">
       <p>This month is {props.month}</p>
       <button>Month: this button adds a month to the year</button>
     </div>
