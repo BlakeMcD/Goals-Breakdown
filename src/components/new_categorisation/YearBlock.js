@@ -1,24 +1,63 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { addYear } from './../../actions/actionCreator';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addYearCategory } from './../../actions/actionCreator';
+import YearCategory from './YearCategory';
+import CategoryIcon from './CategoryIcon';
 
 function YearBlock() {
     
-    //DISPATCHES
+  //VARIABLES
+  const finance = "Finance";
+  const health = "Health";
+  const mentalWellbeing = "Mental Wellbeing";
+  const relationships = "Relationships";
+  const work = "Work";
 
-    const dispatch = useDispatch();
+  //STATE
+  const [categoryName, setCategoryName] = useState("blank");
 
-    const addYearToStore = () => {
-        dispatch(addYear({year: "2023"}));
-    }
+  //SELECTOR
+  const categoriesArray = useSelector((state) => state.years[0].categories);
 
-    // const addYearCatToStore = () => {
-    //     dispatch(addYearCat("Finance"));
-    // }
+  //DISPATCHES
+  const dispatch = useDispatch();
 
-    //RETURN
+  const consoleLogObject = () => {
+    console.log("categoriesArray")
+    console.log(categoriesArray)
+  }
+
+  //FUNCTIONS
+  const addCategoryToYear = (categoryName) => {
+    console.log("addCategoryToYear")
+    dispatch(addYearCategory({category: categoryName, items: []}))
+  }
+
+  const renderBlockCategories = () => {
+      console.log("renderBlockCategories ran") 
+      let allCategories = [];
+      for (let i = 0; i < categoriesArray.length; i++) {
+        allCategories.push(
+          <YearCategory key={i} categoryName={categoriesArray[i].category}></YearCategory>
+      )}
+      return allCategories
+  } 
+
+  //RETURN
   return (
-    <button onClick={addYearToStore}>YearBlock: this button adds another year to store</button>
+    <div className="yearBlock">
+        <h1>YEAR</h1>
+        <CategoryIcon categoryName={finance} iconClickedAddCatToYear={addCategoryToYear}/>
+        
+        <CategoryIcon categoryName={health} iconClickedAddCatToYear={addCategoryToYear}/>
+        <CategoryIcon categoryName={mentalWellbeing} iconClickedAddCatToYear={addCategoryToYear}/>
+        <CategoryIcon categoryName={relationships} iconClickedAddCatToYear={addCategoryToYear}/>
+        <CategoryIcon categoryName={work} iconClickedAddCatToYear={addCategoryToYear}/>
+
+        <button onClick={consoleLogObject}>Console.log what's in state</button>
+        {/* <button onClick={renderBlockCategories}>Render Block Categories</button> */}
+        {renderBlockCategories()} 
+    </div>
   )
 }
 

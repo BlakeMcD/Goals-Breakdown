@@ -1,58 +1,45 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addYearCategory } from './../../actions/actionCreator';
+import { addYearCategoryItem } from '../../actions/actionCreator';
 import CategoryIcon from './CategoryIcon';
 import YearItem from './YearItem';
+import { v4 as uuidv4 } from 'uuid';
 
-function YearCategory() {
+function YearCategory(props) {
 
-    //VARIABLES
-    
-    const finance = "Finance";
-    const health = "Health";
-    const mentalWellbeing = "Mental Wellbeing";
-    const relationships = "Relationships";
-    const work = "Work";
-
-
-    //STATE
-    const [categoryName, setCategoryName] = useState("blank");
-    
- 
     //DISPATCH
     const dispatch = useDispatch();
 
+    //SELECTOR
+    const categoryItemsArray = useSelector((state) => {
+        const rightObject = state.years[0].categories.find((catBlock) => catBlock.category === props.categoryName)
+        if (rightObject.items === undefined) {
+            return []
+        }
+        return rightObject.items
+    })
+
     //FUNCTIONS
-    const addCategoryToYear = () => {
-        dispatch(addYearCategory({category: categoryName}))
-    }
-
-    const setStateOfCategoryName = (catName) => {
-        console.log("setStateOfCategoryName code ran");
-        setCategoryName(catName);
-    }
-
     const addItemToCategory = () => {
-
+        dispatch(addYearCategoryItem({category: props.categoryName, uuid: uuidv4()}));
     }
 
-    //RETURN VALUE
+    const renderCategoryItem = () => {
+        let allItems = [];
+        for (let i = 0; i < categoryItemsArray.length; i++) {
+          allItems.push(
+            <YearItem key={i} categoryName={props.categoryName} uuid={categoryItemsArray[i].uuid}/>
+        )}
+        return allItems
+    } 
+
+    //RETURN
     return (
-      <div>
-        <button onClick={addCategoryToYear}>YearCategory: this button adds a category to the year. It's current state is: {categoryName}</button>
-        <div>
-          <CategoryIcon categoryName={finance} handleCategoryNameChange={setStateOfCategoryName}/>
-        
-          <CategoryIcon categoryName={health} handleCategoryNameChange={setStateOfCategoryName}/>
-          <CategoryIcon categoryName={mentalWellbeing} handleCategoryNameChange={setStateOfCategoryName}/>
-          <CategoryIcon categoryName={relationships} handleCategoryNameChange={setStateOfCategoryName}/>
-          <CategoryIcon categoryName={work} handleCategoryNameChange={setStateOfCategoryName}/>
-
-          <YearItem></YearItem>
-
-
-
-        </div>
+      <div className="yearCategory">
+          <p>This is a category block and its name is {props.categoryName} </p>
+          <button onClick={() => addItemToCategory()}>Clicking this will add an item to {props.categoryName}</button>
+            {renderCategoryItem()}
       </div>
     )
 }
