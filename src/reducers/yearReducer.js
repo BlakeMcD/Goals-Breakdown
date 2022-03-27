@@ -99,12 +99,8 @@ const yearReducer = (state = [], action) => {
     case 'ADD_MONTH_CATEGORY':
         return state.map(obj => {
             if (obj.year === "2022") {
-
-                //WHAT DO I WANT THIS CODE BLOCK TO DO? 
-                //if no months exist, I want to add month object with all the relevant info it may need: uuid, month(name), categories[with category name], weeks[]
-                //if a month already exists, I want to find the month that was specified. When I find this month, I want to search its categories to check that the category doesn't already exist. If it does exists, I won't make any changes. But if it does NOT exist, I want to add a category to the month's category array. 
-
-                if (obj.months.length === 0) {  //this is the first entry to be added to months
+                 //there are no objects in the obj.months array
+                if (obj.months.length === 0) { 
                     return {
                         ...obj, 
                         months: [
@@ -123,7 +119,7 @@ const yearReducer = (state = [], action) => {
                     }
                 };
 
-                //month with that uuid doesn't exist
+                //a month with that uuid doesn't exist
                 const monthExists = obj.months.find((month) => month.uuid === action.item.uuid);
 
                 if (monthExists === undefined) {
@@ -178,41 +174,7 @@ const yearReducer = (state = [], action) => {
                         }
                         return monthObj
                     })
-                }
-
-
-                
-                
-                return {...obj, 
-                    months: obj.months.map((monthObj) => {
-                        if (monthObj.uuid === action.item.uuid) {  //there is already a month with this uuid - you can't add a category if the month doesn't exist
-
-                            //find the category with this uuid
-                            const categoryFound = monthObj.categories.find(monthCat => monthCat.category === action.item.category);
-                            //assuming it cannot find a category with this name, add the category
-
-                            //so...what's going on? We have found the right month, and also checked that it doesn't have a category already existing with this name.
-                            //what that means is that we should a) return this month object b) return all of its current categories c) and add on another category, which we got from the payload. 
-
-                            if (categoryFound === undefined) {  //none of the categories have this name - i.e. a NEW category is being added
-                                return (
-                                    {   
-                                        uuid: monthObj.uuid,
-                                        month: monthObj.month,
-                                        categories: [...monthObj.categories, 
-                                                {
-                                                    category: action.item.category,
-                                                    items: []
-                                                }
-                                        ],
-                                        weeks: monthObj.weeks                          
-                                    }
-                                )
-                            }
-                        } 
-                        return monthObj                 
-                    })
-                }              
+                }  
             };
             return obj;
         })
