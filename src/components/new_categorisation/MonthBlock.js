@@ -1,17 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addMonth } from './../../actions/actionCreator'
+import CategoryIcon from './CategoryIcon';
+import { addMonthCategory } from './../../actions/actionCreator';
 
 function MonthBlock(props) {
-  
+
   //VARIABLES
-  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  //VARIABLES
+  const finance = "Finance";
+  const health = "Health";
+  const mentalWellbeing = "Mental Wellbeing";
+  const relationships = "Relationships";
+  const work = "Work";
+
+  //STATE
+  const [monthName, setMonthName] = useState("Month");
+  
+  //FUNCTIONS
+  const addCategoryToMonth = (categoryName) => {
+    console.log("addCategoryToMonth")
+    dispatch(addMonthCategory({category: categoryName, items: []}))
+  }
+
+  //DISPATCH
+  const dispatch = useDispatch();
 
   //RETURN VALUE
   return (
     <div className="monthBlock ">
-      <p>This month is {props.month}</p>
+      <p>This month is {monthName}</p>
       <button>Month: this button adds a month to the year</button>
+      <CategoryIcon categoryName={finance} iconClickedAddCat={addCategoryToMonth}/>
+      <CategoryIcon categoryName={health} iconClickedAddCat={addCategoryToMonth}/>
+      <CategoryIcon categoryName={mentalWellbeing} iconClickedAddCat={addCategoryToMonth}/>
+      <CategoryIcon categoryName={relationships} iconClickedAddCat={addCategoryToMonth}/>
+      <CategoryIcon categoryName={work} iconClickedAddCat={addCategoryToMonth}/>
     </div>
   )
 }

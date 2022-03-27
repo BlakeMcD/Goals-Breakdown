@@ -42,14 +42,6 @@ export const deleteYearCategoryItem = (payload) => {
     }
 }
 
-//MONTH
-export const addMonth = (payload) => {
-    return {
-        type: "ADD_MONTH",  
-        item: payload
-    };
-};
-
 export const deleteYear = (payload) => {
     return {
         type: "DELETE_YEAR",
@@ -74,3 +66,20 @@ export const deleteYearCatItem = () => {
         type: "DELETE_YEAR_CAT_ITEM"
     };
 };
+
+//MONTH
+export const addMonth = (payload) => {
+    return {
+        type: "ADD_MONTH",  
+        item: payload
+    };
+};
+
+export const addMonthCategory = (payload) => {
+    return {
+        type: "ADD_MONTH_CATEGORY",  
+        item: payload
+    };
+};
+
+

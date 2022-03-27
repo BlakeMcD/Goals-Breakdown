@@ -63,12 +63,12 @@ function YearBlock() {
       <form onSubmit={handleSubmit}>
         <input type="text" value={yearName} onFocus={handleFocus} onChange={handleChange}/>
       </form>
-        <CategoryIcon categoryName={finance} iconClickedAddCatToYear={addCategoryToYear}/>
+        <CategoryIcon categoryName={finance} iconClickedAddCat={addCategoryToYear}/>
         
-        <CategoryIcon categoryName={health} iconClickedAddCatToYear={addCategoryToYear}/>
-        <CategoryIcon categoryName={mentalWellbeing} iconClickedAddCatToYear={addCategoryToYear}/>
-        <CategoryIcon categoryName={relationships} iconClickedAddCatToYear={addCategoryToYear}/>
-        <CategoryIcon categoryName={work} iconClickedAddCatToYear={addCategoryToYear}/>
+        <CategoryIcon categoryName={health} iconClickedAddCat={addCategoryToYear}/>
+        <CategoryIcon categoryName={mentalWellbeing} iconClickedAddCat={addCategoryToYear}/>
+        <CategoryIcon categoryName={relationships} iconClickedAddCat={addCategoryToYear}/>
+        <CategoryIcon categoryName={work} iconClickedAddCat={addCategoryToYear}/>
 
         <button onClick={consoleLogObject}>Console.log what's in state</button>
         {/* <button onClick={renderBlockCategories}>Render Block Categories</button> */}

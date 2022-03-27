@@ -39,7 +39,7 @@ const yearReducer = (state = [], action) => {
     case 'EDIT_YEAR_NAME':
         return state.map(obj => {
             return {
-                ...obj, 
+                
                 year: action.item.year
             }
         })
@@ -97,6 +97,29 @@ const yearReducer = (state = [], action) => {
             };
             return obj;
         })
+
+    case 'ADD_MONTH_CATEGORY':
+        return state.map(obj => {
+            if (obj.year === "2022") {
+                
+                // return  {...obj, category: "Finance"};
+                return  {...obj, months: [action.item]};
+            };
+            return obj;
+        })
+    
+    // case 'ADD_YEAR_CATEGORY':
+    //     return state.map(obj => {
+    //         if (obj.year === "2022") {
+    //             //check if category already exists
+    //             if (obj.categories.find((catBlock) => catBlock.category === action.item.category)) {
+    //                 return obj
+    //             }
+    //             return  {...obj, categories: [...obj.categories, action.item]};
+               
+    //         };
+    //         return obj;
+    //     })
 
 
     default: 
