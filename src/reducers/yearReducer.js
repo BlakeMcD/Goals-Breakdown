@@ -85,9 +85,7 @@ const yearReducer = (state = [], action) => {
                     return categoryBlock
                 })
             }
-        })
-
-    
+        })  
     
     case 'ADD_MONTH':
         return state.map(obj => {
@@ -107,6 +105,7 @@ const yearReducer = (state = [], action) => {
                         ...obj, 
                         months: [
                             {
+                                uuid: action.item.uuid,
                                 month: action.item.month, 
                                 categories: [
                                     {
@@ -130,6 +129,7 @@ const yearReducer = (state = [], action) => {
 
                             if (categoryFound === undefined) {  //none of the categories have this name - i.e. a NEW category is being added
                                 return ({
+                                    uuid: action.item.uuid,
                                     month: action.item.month, 
                                     categories: [...monthObj.categories, 
                                     {
@@ -147,9 +147,32 @@ const yearReducer = (state = [], action) => {
             return obj;
         })
 
+    case 'EDIT_MONTH_NAME': 
+    return state.map(obj => {
+        if (obj.year === "2022") {
+            // return  {...obj, category: "Finance"};
+            return  {...obj, 
+                months: obj.months.map((monthObj) => {
+                    if (monthObj.uuid === action.item.uuid) { //this is the month we want to edit
+                        return({
+                            uuid: monthObj.uuid, 
+                            month: action.item.month, 
+                            categories: monthObj.categories,
+                            weeks: monthObj.weeks
+                        })                      
+                    }
+                    return monthObj
+                })
+            };
+        };
+        return obj;
+    })
+
     default: 
         return state;
     }
+
+
 }
 
 export default yearReducer;

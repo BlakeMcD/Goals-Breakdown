@@ -6,6 +6,7 @@ import YearBlock from './components/new_categorisation/YearBlock';
 import YearCategory from './components/new_categorisation/YearCategory';
 import YearItem from './components/new_categorisation/YearItem';
 import MonthBlock from './components/new_categorisation/MonthBlock';
+import { v4 as uuidv4 } from 'uuid';
 
 
 function App() {
@@ -16,11 +17,11 @@ function App() {
     <div>
         <div className="timeContainer">
           <div className="yearBlockContainer">
-            <YearBlock/>
+            <YearBlock uuid={uuidv4()}/>
           </div>
           <div className="monthBlockContainer">
-            <MonthBlock month="January"/>
-            <MonthBlock  month="February"/>
+            <MonthBlock month="January" uuid={uuidv4()}/>
+            <MonthBlock  month="February" uuid={uuidv4()}/>
           </div>
       </div>
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addMonth } from './../../actions/actionCreator'
 import CategoryIcon from './CategoryIcon';
-import { addMonthCategory } from './../../actions/actionCreator';
+import { addMonthCategory, editMonthName } from './../../actions/actionCreator';
 
 function MonthBlock(props) {
 
@@ -20,7 +20,19 @@ function MonthBlock(props) {
   //FUNCTIONS
   const addCategoryToMonth = (categoryName) => {
     console.log("addCategoryToMonth")
-    dispatch(addMonthCategory({category: categoryName, month: monthName, items: []}))
+    dispatch(addMonthCategory({uuid: props.uuid, category: categoryName, month: monthName, items: []}))
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    //send dispatch
+    dispatch(editMonthName({uuid: props.uuid, month: monthName}))
+  }
+
+  const handleFocus = (event) => event.target.select();
+
+  const handleChange = (event) => {
+    setMonthName(event.target.value)
   }
 
   //DISPATCH
@@ -30,6 +42,9 @@ function MonthBlock(props) {
   return (
     <div className="monthBlock ">
       <p>This month is {monthName}</p>
+      <form onSubmit={handleSubmit} className="itemTextInput">
+        <input type="text" value={monthName} onFocus={handleFocus} onChange={handleChange}/>
+      </form>
       <button>Month: this button adds a month to the year</button>
       <CategoryIcon categoryName={finance} iconClickedAddCat={addCategoryToMonth}/>
       <CategoryIcon categoryName={health} iconClickedAddCat={addCategoryToMonth}/>
