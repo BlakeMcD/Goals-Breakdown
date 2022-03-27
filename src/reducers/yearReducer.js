@@ -101,26 +101,51 @@ const yearReducer = (state = [], action) => {
     case 'ADD_MONTH_CATEGORY':
         return state.map(obj => {
             if (obj.year === "2022") {
+
+                if (obj.months.length === 0) {  //this is the first entry to be added to months
+                    return {
+                        ...obj, 
+                        months: [
+                            {
+                                month: action.item.month, 
+                                categories: [
+                                    {
+                                        category: action.item.category,
+                                        items: []
+                                    }
+                                ],
+                                weeks: []
+                            }
+                        ] 
+                    }
+                }
                 
-                // return  {...obj, category: "Finance"};
-                return  {...obj, months: [action.item]};
+                return {...obj, 
+                    months: obj.months.map((monthObj) => {
+                        if (monthObj.month === action.item.month) {  //there is already a month with this name - you can't add a category if the month doesn't exist
+
+                            //find the category with this name
+                            const categoryFound = monthObj.categories.find(monthCat => monthCat.category === action.item.category);
+                            //assuming it cannot find a category with this name, add the category
+
+                            if (categoryFound === undefined) {  //none of the categories have this name - i.e. a NEW category is being added
+                                return ({
+                                    month: action.item.month, 
+                                    categories: [...monthObj.categories, 
+                                    {
+                                        category: action.item.category,
+                                        items: []
+                                    }], 
+                                    weeks: []
+                                })
+                            }
+                        } 
+                        return monthObj                 
+                    })
+                }              
             };
             return obj;
         })
-    
-    // case 'ADD_YEAR_CATEGORY':
-    //     return state.map(obj => {
-    //         if (obj.year === "2022") {
-    //             //check if category already exists
-    //             if (obj.categories.find((catBlock) => catBlock.category === action.item.category)) {
-    //                 return obj
-    //             }
-    //             return  {...obj, categories: [...obj.categories, action.item]};
-               
-    //         };
-    //         return obj;
-    //     })
-
 
     default: 
         return state;

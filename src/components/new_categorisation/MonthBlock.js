@@ -15,12 +15,12 @@ function MonthBlock(props) {
   const work = "Work";
 
   //STATE
-  const [monthName, setMonthName] = useState("Month");
+  const [monthName, setMonthName] = useState("MonthTest");
   
   //FUNCTIONS
   const addCategoryToMonth = (categoryName) => {
     console.log("addCategoryToMonth")
-    dispatch(addMonthCategory({category: categoryName, items: []}))
+    dispatch(addMonthCategory({category: categoryName, month: monthName, items: []}))
   }
 
   //DISPATCH
