@@ -73,11 +73,11 @@ function MonthBlock(props) {
         <input type="text" value={monthName} onFocus={handleFocus} onChange={handleChange}/>
       </form>
       <button>Month: this button adds a month to the year</button>
-      <CategoryIcon categoryName={finance} iconClickedAddCat={addCategoryToMonth}/>
-      <CategoryIcon categoryName={health} iconClickedAddCat={addCategoryToMonth}/>
-      <CategoryIcon categoryName={mentalWellbeing} iconClickedAddCat={addCategoryToMonth}/>
-      <CategoryIcon categoryName={relationships} iconClickedAddCat={addCategoryToMonth}/>
-      <CategoryIcon categoryName={work} iconClickedAddCat={addCategoryToMonth}/>
+      <CategoryIcon categoryName={finance} monthUuid={props.uuid} iconClickedAddCat={addCategoryToMonth}/>
+      <CategoryIcon categoryName={health} monthUuid={props.uuid} iconClickedAddCat={addCategoryToMonth}/>
+      <CategoryIcon categoryName={mentalWellbeing} monthUuid={props.uuid} iconClickedAddCat={addCategoryToMonth}/>
+      <CategoryIcon categoryName={relationships} monthUuid={props.uuid} iconClickedAddCat={addCategoryToMonth}/>
+      <CategoryIcon categoryName={work} monthUuid={props.uuid} iconClickedAddCat={addCategoryToMonth}/>
       {renderBlockCategories()} 
     </div>
   )

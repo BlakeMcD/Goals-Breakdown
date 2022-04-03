@@ -89,4 +89,13 @@ export const editMonthName = (payload) => {
     }
 }
 
+export const addMonthCategoryItem = (payload) => {
+    return {
+        type: "ADD_MONTH_CATEGORY_ITEM", 
+        item: payload
+    }
+}
+
+
+
 

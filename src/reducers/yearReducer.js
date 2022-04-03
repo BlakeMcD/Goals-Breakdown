@@ -180,25 +180,59 @@ const yearReducer = (state = [], action) => {
         })
 
     case 'EDIT_MONTH_NAME': 
-    return state.map(obj => {
-        if (obj.year === "2022") {
-            // return  {...obj, category: "Finance"};
-            return  {...obj, 
-                months: obj.months.map((monthObj) => {
-                    if (monthObj.uuid === action.item.uuid) { //this is the month we want to edit
-                        return({
-                            uuid: monthObj.uuid, 
-                            month: action.item.month, 
-                            categories: monthObj.categories,
-                            weeks: monthObj.weeks
-                        })                      
-                    }
-                    return monthObj
-                })
+        return state.map(obj => {
+            if (obj.year === "2022") {
+                // return  {...obj, category: "Finance"};
+                return  {...obj, 
+                    months: obj.months.map((monthObj) => {
+                        if (monthObj.uuid === action.item.uuid) { //this is the month we want to edit
+                            return({
+                                uuid: monthObj.uuid, 
+                                month: action.item.month, 
+                                categories: monthObj.categories,
+                                weeks: monthObj.weeks
+                            })                      
+                        }
+                        return monthObj
+                    })
+                };
             };
-        };
-        return obj;
-    })
+            return obj;
+        })
+    
+    case 'ADD_MONTH_CATEGORY_ITEM':      
+        return state.map(obj => {
+             return {
+                ...obj, 
+                months: obj.months.map((monthBlock) => {
+
+                    console.log("monthBlock.uuid:", monthBlock.uuid)
+                    console.log("action.item.monthUuid:", action.item.monthUuid);
+
+                    console.log("action.item:", action.item);
+                    
+                    if (monthBlock.uuid === action.item.monthUuid) {
+                        
+                        return {
+                            ...obj.monthBlock, 
+                            categories: obj.categories.map((catBlock) => {
+                                if (catBlock.category === action.item.category) {
+                                    if (catBlock.items === undefined) {
+                                        return {...catBlock, category: action.item.category, items: [{text: "did this work", uuid: action.item.uuid}] }
+                                    }
+                                    return {...catBlock, category: action.item.category, items: [...catBlock.items, {text: "did this work", uuid: action.item.uuid}] }                    
+                                }
+                                return catBlock
+                            })
+                        }
+                    }
+
+                    return monthBlock
+                })
+
+                
+            }
+        })
 
     default: 
         return state;
