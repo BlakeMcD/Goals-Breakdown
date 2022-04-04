@@ -145,17 +145,11 @@ const yearReducer = (state = [], action) => {
                     ...obj, 
                     months: obj.months.map((monthObj) => {
 
-                        console.log("monthObj.uuid:", monthObj.uuid)
-                        console.log("action.item.uuid:", action.item.uuid)
-
-                        if (monthObj.uuid === action.item.uuid) {  //we have found the month we're referring to
-
-                            console.log("line 134")
+                      if (monthObj.uuid === action.item.uuid) {  //we have found the month we're referring to
 
                             const categoryFound = monthObj.categories.find(monthCat => monthCat.category === action.item.category);
 
                             if (categoryFound === undefined) {  //if it cannot find that this category exists in the categories array, add the category
-                                console.log("line 139")
                                 return (
                                     {   
                                         uuid: monthObj.uuid,
@@ -205,25 +199,19 @@ const yearReducer = (state = [], action) => {
              return {
                 ...obj, 
                 months: obj.months.map((monthBlock) => {
-                   
+                  
                     if (monthBlock.uuid === action.item.monthUuid) {
-                    console.log("monthBlock.uuid:", monthBlock.uuid)
-                    console.log("action.item.monthUuid:", action.item.monthUuid);
                         
                         return {
                             uuid: monthBlock.uuid, 
                             month: monthBlock.month,
-                            categories: monthBlock.categories.map((catBlock) => {
-                                console.log("catBlock.category:", catBlock.category)
-                                    console.log("action.item.category:", action.item.category)
+                            categories: monthBlock.categories.map((catBlock) => { 
 
                                 if (catBlock.category === action.item.category) {   
-
-
-                                    console.log("catBlock.category:", catBlock.category)
-                                    console.log("action.item.category:", action.item.category)
                                     if (catBlock.items === undefined) {
-                                        return {...catBlock, category: action.item.category, items: [{text: "did this work", uuid: action.item.uuid}] }
+                                        return {...catBlock, 
+                                            category: action.item.category, 
+                                            items: [{text: "did this work", uuid: action.item.uuid}] }
                                     }
                                     return {...catBlock, category: action.item.category, items: [...catBlock.items, {text: "did this work", uuid: action.item.uuid}] }                    
                                 }
@@ -234,9 +222,46 @@ const yearReducer = (state = [], action) => {
                     }
 
                     return monthBlock
-                })
+                })  
+            }
+        })
+    
+    case 'EDIT_MONTH_CATEGORY_ITEM':
+        return state.map(obj => {
+            // should map items, and replace the old one with the new one.
+            return {
+                ...obj, 
+                months: obj.months.map((monthBlock) => {
 
-                
+                    if (monthBlock.month === action.item.month) {
+
+                        return {
+                            uuid: monthBlock.uuid,
+                            month: monthBlock.month,
+                            categories: monthBlock.categories.map((categoryBlock) => {
+                                
+                                if (categoryBlock.category === action.item.category) {
+                                    return {
+                                        category: categoryBlock.category, 
+                                        items: categoryBlock.items.map((item) => {
+                                            if (item.uuid === action.item.uuid) {
+                                                return {
+                                                    text: action.item.text, 
+                                                    uuid: action.item.uuid
+                                                }
+                                            }
+                                            return item
+                                        })
+                                    }
+                                }
+                                return categoryBlock;
+                            }), 
+                            weeks: monthBlock.weeks
+                        }
+                            
+                    }
+                    return monthBlock
+                })              
             }
         })
 
@@ -246,7 +271,6 @@ const yearReducer = (state = [], action) => {
 }
 
 export default yearReducer;
-
 
 
 

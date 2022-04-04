@@ -2,14 +2,12 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addMonthCategoryItem } from '../../actions/actionCreator';
 import { v4 as uuidv4 } from 'uuid';
-import YearItem from './YearItem';
+import MonthItem from './MonthItem';
 
 function MonthCategory(props) {
 
   //DISPATCH
   const dispatch = useDispatch();
-
-  console.log("MonthCategoryProps:", props)
 
   //SELECTOR
   const categoryItemsArray = useSelector((state) => {
@@ -27,14 +25,14 @@ function MonthCategory(props) {
 
   //FUNCTIONS
   const addItemToCategory = () => {
-    dispatch(addMonthCategoryItem({monthUuid: props.monthUuid, category: props.categoryName, uuid: uuidv4()}));
+    dispatch(addMonthCategoryItem({monthUuid: props.monthUuid, month: props.month, category: props.categoryName, uuid: uuidv4()}));
   }
 
   const renderCategoryItem = () => {
     let allItems = [];
     for (let i = 0; i < categoryItemsArray.length; i++) {
       allItems.push(
-        <YearItem key={i} categoryName={props.categoryName} uuid={categoryItemsArray[i].uuid}/>
+        <MonthItem key={i} month={props.month} categoryName={props.categoryName} uuid={categoryItemsArray[i].uuid}/>
     )}
     return allItems
 } 
