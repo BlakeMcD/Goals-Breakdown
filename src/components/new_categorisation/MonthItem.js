@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux';
-import { addYearCategoryItem, editYearCategoryItem, deleteYearCategoryItem } from '../../actions/actionCreator';
+import { editMonthCategoryItem, deleteYearCategoryItem } from '../../actions/actionCreator';
 
-function YearItem(props) {
+function MonthItem(props) {
+
+    console.log("MONTHITEM PROPS:", props)
 
     //STATES
     const [itemText, setItemText] = useState("Click to add text");
@@ -12,7 +14,7 @@ function YearItem(props) {
 
     //USEEFFECT
     useEffect(() => {
-        dispatch(editYearCategoryItem({category: props.categoryName, uuid: props.uuid, text: itemText}));
+        dispatch(editMonthCategoryItem({category: props.categoryName, month: props.month, uuid: props.uuid, text: itemText}));
     }, [itemText])
 
     //FUNCTIONS
@@ -20,7 +22,7 @@ function YearItem(props) {
     const handleSubmit = (event) => {
         event.preventDefault();
         //send dispatch
-        dispatch(editYearCategoryItem({category: props.categoryName, uuid: props.uuid, text: itemText}))
+        dispatch(editMonthCategoryItem({category: props.categoryName, month: props.month, uuid: props.uuid, text: itemText}))
     };
 
     const handleChange = (event) => {
@@ -36,7 +38,7 @@ function YearItem(props) {
     //RETURN VALUE
     return (
         <div>
-            <p>YearItem belonging to {props.categoryName}</p>
+            <p>MonthItem belonging to {props.categoryName}</p>
             <p>With a UUID of: {props.uuid}</p>
             <form onSubmit={handleSubmit} className="itemTextInput">
                 <input type="text" value={itemText} onFocus={handleFocus} onChange={handleChange}/>
@@ -47,4 +49,4 @@ function YearItem(props) {
 
 }
 
-export default YearItem
+export default MonthItem

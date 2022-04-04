@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addMonth } from './../../actions/actionCreator'
 import CategoryIcon from './CategoryIcon';
 import { addMonthCategory, editMonthName } from './../../actions/actionCreator';
+import MonthCategory from './MonthCategory';
 
 function MonthBlock(props) {
 
-  //VARIABLES
   //VARIABLES
   const finance = "Finance";
   const health = "Health";
@@ -16,10 +16,13 @@ function MonthBlock(props) {
 
   //STATE
   const [monthName, setMonthName] = useState("MonthTest");
+
+  //SELECTOR
+  const categoriesArray = useSelector((state) => state.years[0].months);
   
   //FUNCTIONS
   const addCategoryToMonth = (categoryName) => {
-    console.log("addCategoryToMonth")
+
     dispatch(addMonthCategory({uuid: props.uuid, category: categoryName, month: monthName, items: []}))
   }
 
@@ -34,7 +37,28 @@ function MonthBlock(props) {
   const handleChange = (event) => {
     setMonthName(event.target.value)
   }
+  
+  const renderBlockCategories = () => {
 
+    if (categoriesArray.length === 0) {
+      return null
+    }
+
+    //find this particular month
+    let thisMonth = categoriesArray.find(month => month.uuid === props.uuid);
+
+    if (thisMonth === undefined) {
+      return null
+    }
+
+    let allCategories = [];
+    for (let i = 0; i < thisMonth.categories.length; i++) {
+      allCategories.push(
+        <MonthCategory key={i} monthUuid={props.uuid} month={monthName} categoryName={thisMonth.categories[i].category}></MonthCategory>
+    )}
+    return allCategories
+  } 
+  
   //DISPATCH
   const dispatch = useDispatch();
 
@@ -46,11 +70,12 @@ function MonthBlock(props) {
         <input type="text" value={monthName} onFocus={handleFocus} onChange={handleChange}/>
       </form>
       <button>Month: this button adds a month to the year</button>
-      <CategoryIcon categoryName={finance} iconClickedAddCat={addCategoryToMonth}/>
-      <CategoryIcon categoryName={health} iconClickedAddCat={addCategoryToMonth}/>
-      <CategoryIcon categoryName={mentalWellbeing} iconClickedAddCat={addCategoryToMonth}/>
-      <CategoryIcon categoryName={relationships} iconClickedAddCat={addCategoryToMonth}/>
-      <CategoryIcon categoryName={work} iconClickedAddCat={addCategoryToMonth}/>
+      <CategoryIcon categoryName={finance} monthUuid={props.uuid} iconClickedAddCat={addCategoryToMonth}/>
+      <CategoryIcon categoryName={health} monthUuid={props.uuid} iconClickedAddCat={addCategoryToMonth}/>
+      <CategoryIcon categoryName={mentalWellbeing} monthUuid={props.uuid} iconClickedAddCat={addCategoryToMonth}/>
+      <CategoryIcon categoryName={relationships} monthUuid={props.uuid} iconClickedAddCat={addCategoryToMonth}/>
+      <CategoryIcon categoryName={work} monthUuid={props.uuid} iconClickedAddCat={addCategoryToMonth}/>
+      {renderBlockCategories()} 
     </div>
   )
 }
