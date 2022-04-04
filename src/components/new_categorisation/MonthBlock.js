@@ -21,7 +21,7 @@ function MonthBlock(props) {
   const categoriesArray = useSelector((state) => state.years[0].months);
 
   // console.log("categoriesArray:", categoriesArray);
-  console.log("Why isn't this running?")
+  console.log("MonthBlock props:", props)
   
   //FUNCTIONS
   const addCategoryToMonth = (categoryName) => {
@@ -57,7 +57,7 @@ function MonthBlock(props) {
     let allCategories = [];
     for (let i = 0; i < thisMonth.categories.length; i++) {
       allCategories.push(
-        <MonthCategory key={i} categoryName={thisMonth.categories[i].category}></MonthCategory>
+        <MonthCategory key={i} monthUuid={props.uuid} categoryName={thisMonth.categories[i].category}></MonthCategory>
     )}
     return allCategories
   } 

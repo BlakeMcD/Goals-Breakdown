@@ -205,25 +205,31 @@ const yearReducer = (state = [], action) => {
              return {
                 ...obj, 
                 months: obj.months.map((monthBlock) => {
-
+                   
+                    if (monthBlock.uuid === action.item.monthUuid) {
                     console.log("monthBlock.uuid:", monthBlock.uuid)
                     console.log("action.item.monthUuid:", action.item.monthUuid);
-
-                    console.log("action.item:", action.item);
-                    
-                    if (monthBlock.uuid === action.item.monthUuid) {
                         
                         return {
-                            ...obj.monthBlock, 
-                            categories: obj.categories.map((catBlock) => {
-                                if (catBlock.category === action.item.category) {
+                            uuid: monthBlock.uuid, 
+                            month: monthBlock.month,
+                            categories: monthBlock.categories.map((catBlock) => {
+                                console.log("catBlock.category:", catBlock.category)
+                                    console.log("action.item.category:", action.item.category)
+
+                                if (catBlock.category === action.item.category) {   
+
+
+                                    console.log("catBlock.category:", catBlock.category)
+                                    console.log("action.item.category:", action.item.category)
                                     if (catBlock.items === undefined) {
                                         return {...catBlock, category: action.item.category, items: [{text: "did this work", uuid: action.item.uuid}] }
                                     }
                                     return {...catBlock, category: action.item.category, items: [...catBlock.items, {text: "did this work", uuid: action.item.uuid}] }                    
                                 }
                                 return catBlock
-                            })
+                            }),
+                            weeks: monthBlock.weeks
                         }
                     }
 
